@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crave - Restaurant</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <a href="#" class="logo">Crave<span>.</span></a>
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#menu">Menu</a>
+        </nav>
+        <button class="cart-button" onclick="toggleCart()">
+            <span>🛒</span> Cart <span id="cart-count">0</span>
+        </button>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <p class="eyebrow">FRESH • FLAVOURFUL • MADE WITH LOVE</p>
+            <h1>Good food.<br>Good mood.</h1>
+            <p class="hero-description">
+                Delicious meals made fresh and delivered straight to your table.
+            </p>
+            <a href="#menu" class="primary-button">Explore Menu ↓</a>
+        </div>
+    </section>
+
+    <section class="menu-section" id="menu">
+        <div class="section-heading">
+            <p class="eyebrow">OUR MENU</p>
+            <h2>Discover deliciousness</h2>
+            <p>Find your next favourite meal.</p>
+        </div>
+
+        <div class="menu-tools">
+            <input type="text" id="search" placeholder="Search dishes..." oninput="searchMenu()">
+            <div id="categories" class="category-buttons"></div>
+        </div>
+
+        <div id="menu-container" class="menu-grid">
+            <p>Loading menu...</p>
+        </div>
+    </section>
+
+    <section class="cart-panel" id="cart-panel">
+        <div class="cart-header">
+            <h2>Your Cart</h2>
+            <button onclick="toggleCart()" class="close-button">✕</button>
+        </div>
+
+        <div id="cart-items"></div>
+
+        <div class="cart-footer">
+            <h3>Total: ₹<span id="cart-total">0.00</span></h3>
+            <button class="primary-button checkout-button" onclick="checkout()">
+                Place Order
+            </button>
+        </div>
+    </section>
+
+    <div id="overlay" onclick="toggleCart()"></div>
+
+    <footer>
+        <h2>Crave<span>.</span></h2>
+        <p>Made with love. Served with flavour.</p>
+        <p>© 2026 Crave Restaurant</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

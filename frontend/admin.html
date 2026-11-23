@@ -1,0 +1,86 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Admin Dashboard</title>
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+    <header>
+        <h1>Restaurant Dashboard</h1>
+        <p>Manage and monitor your orders</p>
+    </header>
+
+    <main>
+        <section class="stats">
+            <div class="stat-card">
+                <h3>Total Orders</h3>
+                <p id="totalOrders">0</p>
+            </div>
+
+            <div class="stat-card">
+                <h3>Placed</h3>
+                <p id="placedOrders">0</p>
+            </div>
+
+            <div class="stat-card">
+                <h3>Preparing</h3>
+                <p id="preparingOrders">0</p>
+            </div>
+
+            <div class="stat-card">
+                <h3>Delivered</h3>
+                <p id="deliveredOrders">0</p>
+            </div>
+        </section>
+
+        <section class="orders-section">
+    <h2>Recent Orders</h2>
+
+    <div class="filters">
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Search by customer or order ID..."
+            oninput="filterOrders()"
+        >
+
+        <select id="statusFilter" onchange="filterOrders()">
+            <option value="all">All Statuses</option>
+            <option value="placed">Placed</option>
+            <option value="preparing">Preparing</option>
+            <option value="delivered">Delivered</option>
+        </select>
+
+        <button onclick="loadOrders()">Refresh Orders</button>
+    </div>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Order ID</th>
+                            <th>Customer</th>
+                            <th>Food Item</th>
+                            <th>Quantity</th>
+                            <th>Unit Price</th>
+                            <th>Status</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="ordersTable">
+                        <tr>
+                            <td colspan="7">Loading orders...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <script src="admin.js"></script>
+</body>
+</html>
