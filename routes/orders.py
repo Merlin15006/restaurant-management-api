@@ -1,3 +1,4 @@
+
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from database.db import get_db
@@ -14,15 +15,15 @@ def create_order(data: OrderCreate, db: Session = Depends(get_db)):
     if not db.query(Customer).filter(Customer.id == data.customer_id).first():
         raise HTTPException(status_code=400, detail="Invalid customer_id")
 
-menu_item = db.query(MenuItem).filter(
-    MenuItem.id == data.menu_item_id
-).first()
+    menu_item = db.query(MenuItem).filter(
+        MenuItem.id == data.menu_item_id
+    ).first()
 
-if not menu_item:
-    raise HTTPException(status_code=400, detail="Invalid menu_item_id")
+    if not menu_item:
+        raise HTTPException(status_code=400, detail="Invalid menu_item_id")
 
-if not menu_item.is_available:
-    raise HTTPException(status_code=409, detail="Menu item is unavailable")
+    if not menu_item.is_available:
+        raise HTTPException(status_code=409, detail="Menu item is unavailable")
 
     order = Order(**data.model_dump())
     db.add(order)
@@ -34,6 +35,7 @@ if not menu_item.is_available:
 @router.get("/", response_model=list[OrderResponse])
 def get_orders(skip: int = 0, limit: int = 10, db: Session = Depends(get_db)):
     return db.query(Order).offset(skip).limit(limit).all()
+
 
 @router.get("/details")
 def get_order_details(db: Session = Depends(get_db)):
@@ -64,6 +66,7 @@ def get_order_details(db: Session = Depends(get_db)):
         }
         for row in results
     ]
+
 
 @router.get("/{order_id}", response_model=OrderResponse)
 def get_order(order_id: int, db: Session = Depends(get_db)):
