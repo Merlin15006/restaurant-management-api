@@ -192,20 +192,41 @@ function toggleCart() {
     document.getElementById("overlay").classList.toggle("show");
 }
 
-async function checkout() {
+
+function checkout() {
     if (cart.length === 0) {
         alert("Your cart is empty!");
         return;
     }
 
-    const name = prompt("Enter your full name:");
-    if (!name || !name.trim()) return;
+    const total = cart.reduce(
+        (sum, item) => sum + Number(item.price) * item.quantity,
+        0
+    );
 
-    const email = prompt("Enter your email address:");
-    if (!email || !email.trim()) return;
+    document.getElementById("checkout-total").textContent =
+        total.toFixed(2);
 
-    const phone = prompt("Enter your phone number:");
-    if (!phone || !phone.trim()) return;
+    document.getElementById("checkout-modal").classList.add("show");
+}
+
+function closeCheckout() {
+    document.getElementById("checkout-modal").classList.remove("show");
+}
+
+async function submitCheckout(event) {
+    event.preventDefault();
+
+    const name = document.getElementById("customer-name").value.trim();
+    const email = document.getElementById("customer-email").value.trim();
+    const phone = document.getElementById("customer-phone").value.trim();
+
+    const submitButton = document.querySelector(
+        "#checkout-form button[type='submit']"
+    );
+
+    submitButton.disabled = true;
+    submitButton.textContent = "Placing Order...";
 
     try {
         const customerResponse = await fetch(`${API}/customers/?limit=100`);
@@ -217,18 +238,14 @@ async function checkout() {
         const customers = await customerResponse.json();
 
         let customer = customers.find(
-            c => c.email.toLowerCase() === email.trim().toLowerCase()
+            c => c.email.toLowerCase() === email.toLowerCase()
         );
 
         if (!customer) {
             const response = await fetch(`${API}/customers/`, {
                 method: "POST",
                 headers: {"Content-Type": "application/json"},
-                body: JSON.stringify({
-                    name: name.trim(),
-                    email: email.trim(),
-                    phone: phone.trim()
-                })
+                body: JSON.stringify({name, email, phone})
             });
 
             if (!response.ok) {
@@ -262,13 +279,27 @@ async function checkout() {
 
         cart = [];
         renderCart();
-        toggleCart();
+        document.getElementById("checkout-form").reset();
+        closeCheckout();
+
+        document.getElementById("cart-panel").classList.remove("open");
+        document.getElementById("overlay").classList.remove("show");
 
     } catch (error) {
         alert("Order failed: " + error.message);
         console.error(error);
+    } finally {
+        submitButton.disabled = false;
+        submitButton.textContent = "Confirm Order";
     }
 }
+
+document.getElementById("checkout-form").addEventListener(
+    "submit",
+    submitCheckout
+);
+
+
 
 loadMenu();
 renderCart();
