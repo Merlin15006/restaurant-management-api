@@ -1,0 +1,25 @@
+$kind: http-request
+description: Updates an existing order using its ID. Returns 404 if not found and 400 if customer or menu item IDs are invalid.
+url: http://127.0.0.1:8000/orders/1?
+method: PUT
+queryParams:
+  - key: ""
+    value: null
+    disabled: false
+    description: Updates an existing order using its unique ID. Requires valid customer ID, menu item ID, quantity, unit price and status. Returns 404 if the order is not found and 400 if the customer or menu item ID is invalid.
+body:
+  type: json
+  content: "{\r
+
+    \  \"customer_id\": 1,\r
+
+    \  \"menu_item_id\": 1,\r
+
+    \  \"quantity\": 3,\r
+
+    \  \"unit_price\": 200,\r
+
+    \  \"status\": \"Preparing\"\r
+
+    }"
+order: 5000

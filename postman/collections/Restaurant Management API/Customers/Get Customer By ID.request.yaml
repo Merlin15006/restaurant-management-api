@@ -1,0 +1,24 @@
+$kind: http-request
+description: Retrieves a specific customer using their unique ID. Returns 404 if not found.
+url: http://127.0.0.1:8000/customers/13?
+method: GET
+queryParams:
+  - key: ""
+    value: null
+    disabled: false
+    description: |-
+      Retrieves a specific customer using their unique customer ID.
+
+      HTTP Method: GET
+
+      Endpoint: `/customers/{customer_id}`
+
+      Path Parameter:
+      - customer_id: Unique ID of the customer.
+
+      Success Response: 200 OK
+
+      Error Response: 404 Not Found – Customer not found.
+
+      Response Body: Returns customer ID, name, email, phone number, created_at and updated_at.
+order: 5000

@@ -1,0 +1,13 @@
+$kind: http-request
+description: Retrieves all orders from the database. Supports pagination.
+url: http://127.0.0.1:8000/orders/?
+method: GET
+queryParams:
+  - key: ""
+    value: null
+    disabled: false
+    description: |-
+      Retrieves all orders from the database. Supports pagination using skip and limit parameters.
+
+      Expected response: 200 OK.
+order: 1000

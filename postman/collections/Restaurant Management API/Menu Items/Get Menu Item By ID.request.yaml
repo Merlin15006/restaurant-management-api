@@ -1,0 +1,10 @@
+$kind: http-request
+description: Retrieves a specific menu item using its ID. Returns 404 if not found.
+url: http://127.0.0.1:8000/menu_items/1?
+method: GET
+queryParams:
+  - key: ""
+    value: null
+    disabled: false
+    description: Retrieves a specific menu item using its unique ID. Returns 404 if the menu item is not found.
+order: 2000

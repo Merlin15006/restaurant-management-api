@@ -1,0 +1,13 @@
+$kind: http-request
+description: Deletes a menu item using its ID. Returns 404 if not found.
+url: http://127.0.0.1:8000/menu_items/1?
+method: DELETE
+queryParams:
+  - key: ""
+    value: null
+    disabled: false
+    description: |-
+      Deletes an existing menu item using its unique ID. Returns 200 OK on successful deletion and 404 if the menu item is not found.
+
+      No JSON body is required.
+order: 5000

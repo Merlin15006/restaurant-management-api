@@ -1,0 +1,15 @@
+$kind: http-request
+description: Retrieves order details along with customer and menu item names.
+url: http://127.0.0.1:8000/orders/details?
+method: GET
+queryParams:
+  - key: ""
+    value: null
+    disabled: false
+    description: |-
+      Retrieves order details along with customer name and menu item name, quantity, unit price, status and order date.
+
+      Expected response: 200 OK.
+
+      No JSON body required.
+order: 2000

@@ -1,0 +1,38 @@
+$kind: http-request
+description: Updates an existing customer's details using their ID. Returns 404 if not found.
+url: http://127.0.0.1:8000/customers/13?
+method: PUT
+queryParams:
+  - key: ""
+    value: null
+    disabled: false
+    description: |-
+      Updates an existing customer's details using their customer ID.
+
+      HTTP Method: PUT
+
+      Endpoint: `/customers/{customer_id}`
+
+      Path Parameter:
+      - customer_id: ID of the customer to update.
+
+      Request Body:
+      - name: Customer's name
+      - email: Valid email address
+      - phone: Customer's phone number (optional)
+
+      Success Response: 200 OK
+
+      Response Body: Returns the updated customer details.
+body:
+  type: json
+  content: "{\r
+
+    \  \"name\": \"Updated Customer\",\r
+
+    \  \"email\": \"updated@example.com\",\r
+
+    \  \"phone\": \"9876543210\"\r
+
+    }"
+order: 3000

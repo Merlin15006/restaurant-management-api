@@ -1,0 +1,35 @@
+$kind: http-request
+description: Creates a new customer. Returns 201 on success and 409 if the email is already registered.
+url: http://127.0.0.1:8000/customers/?
+method: POST
+queryParams:
+  - key: ""
+    value: null
+    disabled: false
+    description: |-
+      Creates a new customer in the Restaurant Management System.
+
+      HTTP Method: POST
+
+      Endpoint: `/customers/`
+
+      Request Body:
+      - name: Customer's name (required)
+      - email: Customer's valid email address (required)
+      - phone: Customer's phone number (optional)
+
+      Success Response: 201 Created
+
+      Response Body: Returns the newly created customer details, including customer ID and timestamps.
+body:
+  type: json
+  content: "{\r
+
+    \  \"name\": \"John\",\r
+
+    \  \"email\": \"john@example.com\",\r
+
+    \  \"phone\": \"9876543210\"\r
+
+    }"
+order: 2000

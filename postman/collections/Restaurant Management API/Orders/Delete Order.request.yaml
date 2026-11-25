@@ -1,0 +1,13 @@
+$kind: http-request
+description: Deletes an order using its ID. Returns 404 if not found.
+url: http://127.0.0.1:8000/orders/1?
+method: DELETE
+queryParams:
+  - key: ""
+    value: null
+    disabled: false
+    description: |-
+      Deletes an existing order using its unique ID. Returns 200 OK on successful deletion and 404 if the order is not found.
+
+      No JSON body required.
+order: 6000

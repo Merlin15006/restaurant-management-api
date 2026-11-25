@@ -1,0 +1,13 @@
+$kind: http-request
+description: Retrieves a specific order using its ID. Returns 404 if not found.
+url: http://127.0.0.1:8000/orders/1?
+method: GET
+queryParams:
+  - key: ""
+    value: null
+    disabled: false
+    description: |-
+      Retrieves a specific order using its unique ID. Returns 404 if the order is not found.
+
+      No JSON body required.
+order: 3000

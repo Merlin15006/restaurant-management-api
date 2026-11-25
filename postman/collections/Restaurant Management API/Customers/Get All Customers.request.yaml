@@ -1,0 +1,19 @@
+$kind: http-request
+description: Retrieves all customers from the database.
+url: http://127.0.0.1:8000/customers/?
+method: GET
+queryParams:
+  - key: ""
+    value: null
+    disabled: false
+    description: |-
+      Retrieves all registered customers from the Restaurant Management System.
+
+      HTTP Method: GET
+
+      Endpoint:*`/customers/`
+
+      Success Response: 200 OK
+
+      Response Body: Returns a list of customer records containing their ID, name, email, phone number, creation timestamp and update timestamp.
+order: 1000

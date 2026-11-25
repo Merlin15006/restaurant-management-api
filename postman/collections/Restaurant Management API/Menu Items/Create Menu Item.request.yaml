@@ -1,0 +1,25 @@
+$kind: http-request
+description: Creates a new menu item. Requires a valid category ID, name and price.
+url: http://127.0.0.1:8000/menu_items/?
+method: POST
+queryParams:
+  - key: ""
+    value: null
+    disabled: false
+    description: Creates a new menu item in the database. Requires a valid category ID, name and price. Returns 201 Created on success and 400 if the category ID is invalid.
+body:
+  type: json
+  content: "{\r
+
+    \  \"category_id\": 1,\r
+
+    \  \"name\": \"Chicken Burger\",\r
+
+    \  \"description\": \"Grilled chicken burger\",\r
+
+    \  \"price\": 180,\r
+
+    \  \"is_available\": true\r
+
+    }"
+order: 3000

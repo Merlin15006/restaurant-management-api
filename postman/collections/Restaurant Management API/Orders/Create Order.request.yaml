@@ -1,0 +1,30 @@
+$kind: http-request
+description: Creates a new order. Requires valid customer and menu item IDs, quantity and unit price.
+url: http://127.0.0.1:8000/orders/?
+method: POST
+queryParams:
+  - key: ""
+    value: null
+    disabled: false
+    description: |-
+      Creates a new order for a customer. Requires valid customer ID, menu item ID, quantity and unit price. Returns 201 Created on success.
+
+      Go to Body → raw → JSON.
+
+      We need to check your exact order schema before entering the JSON.
+body:
+  type: json
+  content: "{\r
+
+    \  \"customer_id\": 1,\r
+
+    \  \"menu_item_id\": 1,\r
+
+    \  \"quantity\": 2,\r
+
+    \  \"unit_price\": 180,\r
+
+    \  \"status\": \"Pending\"\r
+
+    }"
+order: 4000

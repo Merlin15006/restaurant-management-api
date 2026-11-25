@@ -1,0 +1,22 @@
+$kind: http-request
+description: Deletes a customer using their ID. Returns 404 if not found.
+url: http://127.0.0.1:8000/customers/13?
+method: DELETE
+queryParams:
+  - key: ""
+    value: null
+    disabled: false
+    description: |-
+      Deletes an existing customer from the Restaurant Management System using their customer ID.
+
+      HTTP Method: DELETE
+
+      Endpoint: `/customers/{customer_id}`
+
+      Path Parameter:
+      - customer_id: ID of the customer to delete.
+
+      Success Response: 200 OK
+
+      Response: Confirmation message indicating that the customer was deleted.
+order: 4000

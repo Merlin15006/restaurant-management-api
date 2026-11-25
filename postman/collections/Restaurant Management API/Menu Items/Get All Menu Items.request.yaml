@@ -1,0 +1,30 @@
+$kind: http-request
+description: Retrieves all menu items. Supports pagination and filtering by name.
+url: http://127.0.0.1:8000/menu_items/?
+method: GET
+queryParams:
+  - key: ""
+    value: null
+    disabled: false
+    description: |-
+      Retrieves all menu items from the database. Supports pagination using skip and limit parameters and optional filtering by menu item name.
+
+      Expected response: 200 OK.
+
+      Returns a list of menu items with their details.
+body:
+  type: json
+  content: "{\r
+
+    \  \"category_id\": 1,\r
+
+    \  \"name\": \"Chicken Burger\",\r
+
+    \  \"description\": \"Delicious chicken burger\",\r
+
+    \  \"price\": 180.0,\r
+
+    \  \"is_available\": true\r
+
+    }"
+order: 1000
